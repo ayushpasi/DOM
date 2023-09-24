@@ -34,41 +34,6 @@ function saveData(e) {
   document.getElementById("mobile").value = "";
   showData(dataObj);
 }
-// Function to remove a user when the delete button is clicked
-function removeUser(e) {
-  if (confirm("Are you sure?")) {
-    var li = e.target.parentNode;
-    user.removeChild(li);
-    var emailDelete = findEmail(li);
-    localStorage.removeItem(emailDelete[1].trim());
-  }
-}
-// Function to split and extract the name, email, and mobile from the list item
-function findEmail(li) {
-  var text = li.textContent;
-  var parts = text.split("  ");
-  if (parts.length > 1) {
-    return parts;
-  }
-  return null;
-}
-
-// Function to handle editing user data
-function editData(e) {
-  var li = e.target.parentNode;
-  user.removeChild(li);
-  var formData = findEmail(li);
-
-  // Extract the name, email, and mobile separately
-  var name = formData[0].trim();
-  var email = formData[1].trim();
-  var mobile = formData[2].trim();
-
-  // Set the form fields with the extracted values for editing
-  document.getElementById("name").value = name;
-  document.getElementById("email").value = email;
-  document.getElementById("mobile").value = mobile;
-}
 
 function showData(obj) {
   // Create a new list item element
